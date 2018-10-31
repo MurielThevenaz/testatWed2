@@ -1,0 +1,29 @@
+<div class="input-container">
+    <div class="input">
+        <span class="input-type">TO DO</span>
+        <span class="input-value">
+            <form action="/random" method="post">
+            <label>Titel <input name="titel"/></label>
+            <label>Note <input name="note"/></label>
+            <label>Importance <input name="importance"/></label>
+            <input type="submit">
+        </form>
+        </span>
+    </div>
+    <div class="input">
+        <span class="input-type">Bis</span>
+        <span class="input-value">{{result.to}}</span>
+    </div>
+    <div class="input">
+        <span class="input-type">Anzahl</span>
+        <span class="input-value">{{result.quantity}}</span>
+    </div>
+</div>
+
+<ol class="result-container">
+    {{#each result.list}}
+        <li class="result">
+            {{this}}
+        </li>
+    {{/each}}
+</ol>
