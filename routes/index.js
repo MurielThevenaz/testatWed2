@@ -1,9 +1,9 @@
 var express = require('express');
 var router = express.Router();
-const randomController = require('../controllers/toDoController');
+const toDoController = require('../controllers/toDoController');
 
-router.get('/',  randomController.index);
-router.get('/random', randomController.renderRandomResult);
-router.post('/random', randomController.redirectToRandomResult);
+router.get('/',  toDoController.index);
+router.post('/toDoList', toDoController.saveEntry);
+router.get('/toDoEntry', toDoController.redirectToEntry);
 
 module.exports = router;

@@ -1,0 +1,26 @@
+<div class="input-container">
+    <div class="input">
+        <span class="input-type"></span>
+        <span class="input-value">
+            <form action="/toDoList" method="post">
+                <label fot="title">Titel</label>
+                <input name="titel" type="text" value="{{title}}" reguired/>
+
+                <label for="note">Note</label>
+                <textarea name="note" type="text">{{note}}</textarea>
+
+                <label for="dueDate">To do until</label>
+                <input type="date" name="date" value="{{dueDate}}" required/>
+
+                <label for="importance">Importance</label>
+                <input type="range" name="importance" value="{{importance}}"/>
+
+                <label for="done"><span>Done</span></label>
+                <input type="checkbox" name="done">
+
+                <input type="submit">
+                <input type="reset">
+        </form>
+        </span>
+    </div>
+</div>

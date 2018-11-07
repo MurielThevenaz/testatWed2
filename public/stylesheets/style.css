@@ -10,6 +10,7 @@ a {
 
 form > label{
   display: block;
+  font-weight: bold;
   width: 25%;
 }
 
@@ -18,7 +19,7 @@ form > label > input{
 }
 
 .input-container::before{
-  content: 'Input';
+  content: 'Your Entry';
   font-weight: bold;
   border-bottom: 1px black solid;
   display: table-caption;
@@ -48,7 +49,7 @@ form > label > input{
 
 
 .result-container::before{
-  content: 'Result';
+  content: 'Your To Do List';
   display: block;
   font-weight: bold;
   border-bottom: 1px black solid;

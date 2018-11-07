@@ -1,0 +1,17 @@
+<nav>
+    <form action="/toDoEntry" method="get">
+        <input type="submit" value="Create new note">
+    </form>
+    <form action="/" method="get">
+        <input type="submit" value="Switch style">
+    </form>
+</nav>
+<main>
+    <ol class="notes-container">
+        {{#each notes.list}}
+            <li class="note">
+                {{this}}
+            </li>
+        {{/each}}
+    </ol>
+</main>
