@@ -1,4 +1,5 @@
 var createError = require('http-errors');
+var hbs = require('hbs');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
@@ -9,6 +10,12 @@ var usersRouter = require('./routes/users');
 
 var app = express();
 
+hbs.registerHelper('if_eq', function(a, b, opts) {
+    if(a == b)
+        return opts.fn(this);
+    else
+        return opts.inverse(this);
+});
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');

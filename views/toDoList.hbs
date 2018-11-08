@@ -6,12 +6,22 @@
         <input type="submit" value="Switch style">
     </form>
 </nav>
+<section>
+
+</section>
 <main>
     <ol class="notes-container">
-        {{#each notes.list}}
-            <li class="note">
-                {{this}}
-            </li>
+        {{#each notes}}
+            <ol class="note">
+                <span>{{this.importance}}</span>
+                <span>{{this.titel}}</span>
+                <span>{{this.note}}</span>
+            </ol>
         {{/each}}
+        {{#if_eq notes.length 0}}
+            <section class="empty-list">
+                <p>No To Do found</p>
+            </section>
+        {{/if_eq}}
     </ol>
 </main>

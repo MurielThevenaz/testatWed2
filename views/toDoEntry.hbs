@@ -1,8 +1,8 @@
-<div class="input-container">
+<section class="input-container">
     <div class="input">
         <span class="input-type"></span>
         <span class="input-value">
-            <form action="/toDoList" method="post">
+            <form action="/toDoByDueDate" method="post">
                 <label fot="title">Titel</label>
                 <input name="titel" type="text" value="{{title}}" reguired/>
 
@@ -13,7 +13,7 @@
                 <input type="date" name="date" value="{{dueDate}}" required/>
 
                 <label for="importance">Importance</label>
-                <input type="range" name="importance" value="{{importance}}"/>
+                <input type="range" name="importance" min="1" max="6" value="{{importance}}" tabindex="test"/>
 
                 <label for="done"><span>Done</span></label>
                 <input type="checkbox" name="done">
@@ -23,4 +23,4 @@
         </form>
         </span>
     </div>
-</div>
+</section>

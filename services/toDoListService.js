@@ -6,12 +6,31 @@ function getNote(id, callback) {
 }
 
 function addNote(note, callback) {
+    note.creationDate = Date.now();
     db.insert(note, callback);
 }
 
-function getAllNotes(callback) {
-    let findQuery = {};
-    db.find(findQuery);
+function getAllNotesByDueDate() {
+    let result = getAllNotes();
+    return result;
 }
 
-module.exports = {getNote, addNote, getAllNotes};
+function getAllNotesByCreatedDate() {
+
+}
+
+function getAllNotesByImportance() {
+
+}
+
+function getAllNotes() {
+    let result = [];
+    db.find({}).exec(function(err, docs) {
+        docs.forEach(function(d) {
+            result.push(d);
+        });
+    });
+    return result;
+}
+
+module.exports = {getNote, addNote, getAllNotesByDueDate, getAllNotesByCreatedDate, getAllNotesByImportance};
