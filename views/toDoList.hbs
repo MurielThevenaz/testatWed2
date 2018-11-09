@@ -6,21 +6,41 @@
         <input type="submit" value="Switch style">
     </form>
 </nav>
-<section>
-
+<section class="todo-list">
+    <form action="/toDoByDueDate" method="post">
+        <input type="submit" value="Sort By Due Date">
+    </form>
+    <form action="/toDoByCreatedDate" method="post">
+        <input type="submit" value="Sort By Creation Date">
+    </form>
+    <form action="/toDoByImportance" method="post">
+        <input type="submit" value="Sort By Importance">
+    </form>
+    <label for="hideDone"><span>Hide Done Tasks</span></label>
+    <input type="checkbox" name="hideDone" onclick="">
 </section>
 <main>
     <ol class="notes-container">
         {{#each notes}}
             <ol class="note">
-                <span>{{this.importance}}</span>
-                <span>{{this.titel}}</span>
-                <span>{{this.note}}</span>
+                <div id="date">Due Date: {{this.date}}</div>
+                <div id="titel">{{this.titel}}</div>
+                <div id="importance">{{this.importance}}</div>
+                <div id="done">
+                    <label for="done"><span>Done</span></label>
+                    <input type="checkbox" name="done">
+                </div>
+                <div id="note">{{this.note}}</div>
+                <div id="changeNote">
+                    <form action="/toDoEntry/{{this._id}}" method="post">
+                        <input type="submit" value="Change existing note">
+                    </form>
+                </div>
             </ol>
         {{/each}}
         {{#if_eq notes.length 0}}
             <section class="empty-list">
-                <p>No To Do found</p>
+                <p>No "To Do" found</p>
             </section>
         {{/if_eq}}
     </ol>

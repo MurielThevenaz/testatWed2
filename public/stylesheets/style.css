@@ -7,7 +7,6 @@ a {
   color: #00B7FF;
 }
 
-
 form > label{
   display: block;
   font-weight: bold;
@@ -19,7 +18,7 @@ form > label > input{
 }
 
 .input-container::before{
-  content: 'Your Entry';
+  content: 'Your Task';
   font-weight: bold;
   border-bottom: 1px black solid;
   display: table-caption;
@@ -30,6 +29,9 @@ form > label > input{
   width: 100%;
 }
 
+.input-container form {
+  margin-bottom: 5em;
+}
 
 .input-container > .input{
   display: table-row;
@@ -48,18 +50,22 @@ form > label > input{
 
 
 
-.result-container::before{
+.todo-list::before{
   content: 'Your To Do List';
   display: block;
   font-weight: bold;
   border-bottom: 1px black solid;
 }
-.result-container{
+.todo-list{
   list-style-position: inside;
   padding-left: 0;
 }
 
-.result:nth-child(2n){
+#titel{
+  font-weight: bold;
+}
+
+#note{
   background: lightgray;
 }
 

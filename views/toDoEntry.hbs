@@ -2,7 +2,7 @@
     <div class="input">
         <span class="input-type"></span>
         <span class="input-value">
-            <form action="/toDoByDueDate" method="post">
+            <form action="/saveEntry" method="post">
                 <label fot="title">Titel</label>
                 <input name="titel" type="text" value="{{title}}" reguired/>
 
@@ -16,7 +16,7 @@
                 <input type="range" name="importance" min="1" max="6" value="{{importance}}" tabindex="test"/>
 
                 <label for="done"><span>Done</span></label>
-                <input type="checkbox" name="done">
+                <input type="checkbox" name="done" value="1">
 
                 <input type="submit">
                 <input type="reset">

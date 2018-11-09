@@ -15,7 +15,7 @@ function getAllByImportance(req, res)
     res.render('toDoList', { title: 'To Do List', notes: toDoListService.getAllNotesByImportance()});
 }
 
-function redirectToEntry(req, res)
+function redirectToNewEntry(req, res)
 {
     res.render('toDoEntry');
 }
@@ -27,6 +27,11 @@ function saveEntry(req, res)
     });
 }
 
+function redirectToEntry(req, res)
+{
+    res.render('toDoEntry', {title: 'Change Entry', note: toDoListService.getNote(req.body._id)});
+}
 
 
-module.exports = {getAllByDueDate, getAllByCreatedDate, getAllByImportance, redirectToEntry, saveEntry};
+
+module.exports = {getAllByDueDate, getAllByCreatedDate, getAllByImportance, redirectToNewEntry, redirectToEntry, saveEntry};
