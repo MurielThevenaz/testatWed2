@@ -1,5 +1,5 @@
 <nav>
-    <form action="/toDoEntry" method="get">
+    <form action="/toDoEntry/0" method="get">
         <input type="submit" value="Create new note">
     </form>
     <form action="/" method="get">
@@ -7,17 +7,27 @@
     </form>
 </nav>
 <section class="todo-list">
-    <form action="/toDoByDueDate" method="post">
-        <input type="submit" value="Sort By Due Date">
-    </form>
-    <form action="/toDoByCreatedDate" method="post">
+    <h1>Your To Do List</h1>
+    <span>
+        <form action="/toDoList/{{this.sort}}" method="get">
+            <input type="hidden" name="sort" value="date">
+            <input type="submit" value="Sort By Due Date">
+        </form>
+    </span>
+    <span>
+        <form action="/toDoList/{{this.sort}}" method="get">
+            <input type="hidden" name="sort" value="createdDate">
         <input type="submit" value="Sort By Creation Date">
-    </form>
-    <form action="/toDoByImportance" method="post">
-        <input type="submit" value="Sort By Importance">
-    </form>
+        </form>
+    </span>
+    <span>
+        <form action="/toDoList/{{this.sort}}" method="get">
+            <input type="hidden" name="sort" value="importance">
+            <input type="submit" value="Sort By Importance">
+        </form>
+    </span>
     <label for="hideDone"><span>Hide Done Tasks</span></label>
-    <input type="checkbox" name="hideDone" onclick="">
+    <input formaction="/toggleHide" type="checkbox" name="hideDone">
 </section>
 <main>
     <ol class="notes-container">
@@ -25,16 +35,21 @@
             <ol class="note">
                 <div id="date">Due Date: {{this.date}}</div>
                 <div id="titel">{{this.titel}}</div>
-                <div id="importance">{{this.importance}}</div>
-                <div id="done">
-                    <label for="done"><span>Done</span></label>
-                    <input type="checkbox" name="done">
-                </div>
-                <div id="note">{{this.note}}</div>
-                <div id="changeNote">
-                    <form action="/toDoEntry/{{this._id}}" method="post">
+                <div id="beforeNote">
+                    <span id="importance">
+                        <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+                    </span>
+                    <span id="changeNote">
+                        <form action="/toDoEntry/{{this._id}}" method="get">
                         <input type="submit" value="Change existing note">
-                    </form>
+                        </form>
+                    </span>
+                </div>
+                <div id="note">
+                    <span id="done">
+                    <input type="checkbox" name="done" checked="{{this.done}}">
+                    </span>
+                    <span>{{this.note}}</span>
                 </div>
             </ol>
         {{/each}}

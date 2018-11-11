@@ -7,58 +7,106 @@ a {
   color: #00B7FF;
 }
 
+h1{
+  font-size: larger;
+  font-weight: bold;
+  border-bottom: 1px black solid;
+}
+
 form > label{
   display: block;
   font-weight: bold;
   width: 25%;
+  box-sizing: border-box;
+  resize: vertical;
 }
 
-form > label > input{
+form > input{
+  border: 0.2rem solid;
   width: 100%;
+  box-sizing: border-box;
 }
 
-.input-container::before{
-  content: 'Your Task';
-  font-weight: bold;
-  border-bottom: 1px black solid;
-  display: table-caption;
+form > input[type="submit"]{
+  width: 16rem;
+}
+
+form > input[type="reset"]{
+  width: 16rem;
+}
+
+form > input[type="range"]{
+  width: 16rem;
+  border: none;
+}
+
+form > input[type="submit"]:hover{
+  cursor: pointer;
+}
+
+form > input[type="submit"]:active{
+  background-color: darkgray;
+}
+
+form > textarea{
+  border: 0.2rem solid;
+  width: 100%;
+  resize: vertical;
+  box-sizing: border-box;
+}
+
+nav {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  margin-bottom: 2em;
+}
+
+.blue {
+  background-color: aqua;
+  color: aliceblue;
 }
 
 .input-container{
-  display: table;
+  display: flow;
+  flex-flow: row wrap;
   width: 100%;
 }
 
-.input-container form {
-  margin-bottom: 5em;
+.input-container input {
+  margin-bottom: 1rem;
 }
 
-.input-container > .input{
-  display: table-row;
+.input-container textarea {
+  height: 6em;
+  margin-bottom: 1rem;
 }
 
-.input-container >  .input > .input-value{
-  display: table-cell;
-  width: 100%;
-}
-
-.input-container >  .input > .input-type{
-  display: table-cell;
-  padding-right: 10px;
-}
-
-
-
-
-.todo-list::before{
-  content: 'Your To Do List';
-  display: block;
-  font-weight: bold;
-  border-bottom: 1px black solid;
-}
 .todo-list{
-  list-style-position: inside;
-  padding-left: 0;
+  display: flow;
+  flex-flow: row wrap;
+  width: 100%;
+}
+
+.todo-list > span{
+  display: inline-flex;
+  justify-content: space-between;
+}
+
+.notes-container {
+  display: flow;
+  flex-flow: row wrap;
+  border: 0.2rem solid;
+  padding: 2rem;
+}
+
+.note {
+  margin-bottom: 3rem;
+}
+
+#beforeNote{
+  display: flex;
+  justify-content: space-between;
 }
 
 #titel{
@@ -67,5 +115,15 @@ form > label > input{
 
 #note{
   background: lightgray;
+}
+
+#date{
+  font-style: italic;
+  color: red;
+}
+
+#importance > span:hover:before {
+  content: "\2605";
+  position: absolute;
 }
 

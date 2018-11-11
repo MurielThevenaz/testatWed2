@@ -1,9 +1,10 @@
 <section class="input-container">
+    <h1>Your Task</h1>
     <div class="input">
         <span class="input-type"></span>
         <span class="input-value">
-            <form action="/saveEntry" method="post">
-                <label fot="title">Titel</label>
+            <form action="{{#with _id}}/saveEntry/{{this}}{{else}}saveEntry{{/with}}" method="post">
+                <label for="title">Titel</label>
                 <input name="titel" type="text" value="{{title}}" reguired/>
 
                 <label for="note">Note</label>
@@ -13,7 +14,7 @@
                 <input type="date" name="date" value="{{dueDate}}" required/>
 
                 <label for="importance">Importance</label>
-                <input type="range" name="importance" min="1" max="6" value="{{importance}}" tabindex="test"/>
+                <input type="range" name="importance" min="1" max="5" value="{{importance}}"/>
 
                 <label for="done"><span>Done</span></label>
                 <input type="checkbox" name="done" value="1">

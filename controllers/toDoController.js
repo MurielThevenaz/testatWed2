@@ -1,37 +1,42 @@
 const toDoListService = require('../services/toDoListService');
 
-function getAllByDueDate(req, res)
+function index(req, res)
 {
-    res.render('toDoList', { title: 'To Do List', notes: toDoListService.getAllNotesByDueDate()});
+    toDoListService.getAllNotes(10, function (err, notes) {
+        res.render('toDoList', { title: 'To Do List', notes});
+    });
 }
 
-function getAllByCreatedDate(req, res)
+function getAllNotes(req, res)
 {
-    res.render('toDoList', { title: 'To Do List', notes: toDoListService.getAllNotesByCreatedDate()});
-}
-
-function getAllByImportance(req, res)
-{
-    res.render('toDoList', { title: 'To Do List', notes: toDoListService.getAllNotesByImportance()});
-}
-
-function redirectToNewEntry(req, res)
-{
-    res.render('toDoEntry');
+    toDoListService.getAllNotes(req.params.code, function (err, notes) {
+        res.render('toDoList', { title: 'To Do List', notes});
+    });
 }
 
 function saveEntry(req, res)
 {
     toDoListService.addNote(req.body, function() {
-        getAllByDueDate(req, res);
+        getAllNotes(req, res);
+    });
+}
+
+function updateEntry(req, res)
+{
+    toDoListService.updateNote(req.params.id, req.body, function() {
+        getAllNotes(req, res);
     });
 }
 
 function redirectToEntry(req, res)
 {
-    res.render('toDoEntry', {title: 'Change Entry', note: toDoListService.getNote(req.body._id)});
+    if (req.params.id === 0) {
+        res.render('toDoEntry');
+    } else {
+        toDoListService.getNote(req.params.id, function(err, note) {
+           res.render('toDoEntry', note);
+        });
+    }
 }
 
-
-
-module.exports = {getAllByDueDate, getAllByCreatedDate, getAllByImportance, redirectToNewEntry, redirectToEntry, saveEntry};
+module.exports = {index, getAllNotes, redirectToEntry, saveEntry, updateEntry};

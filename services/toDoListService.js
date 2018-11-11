@@ -1,12 +1,8 @@
 var Datastore = require('nedb');
 var db = new Datastore({ filename: './data/notes.db', autoload: true });
 
-function getNote(id) {
-    let note = null;
-    db.findOne({ _id: id }, function(err, doc) {
-        note = doc;
-    });
-    return note;
+function getNote(id, callback) {
+    db.findOne({ _id: id }, callback);
 }
 
 function addNote(note, callback) {
@@ -14,45 +10,36 @@ function addNote(note, callback) {
     db.insert(note, callback);
 }
 
-function getAllNotesByDueDate() {
-    let result = [];
-    db.find({}).sort({dueDate: 1}).exec(function(err, docs) {
-        docs.forEach(function(d) {
-            result.push(d);
+function updateNote(id, note, callback) {
+    db.update({_id: id}, note, {}, callback);
+}
+
+function getAllNotes(sort, callback) {
+    switch(sort) {
+        case 'date':
+            queryNotes(sort, 1, false, callback);
+            break;
+        case 'createdDate':
+            queryNotes(sort, 1, false, callback);
+            break;
+        case 'importance':
+            queryNotes(sort, -1, false, callback);
+            break;
+        default:
+            queryNotes('date', 1, false, callback);
+    }
+}
+
+function queryNotes(sorting, order, isHidden, callback) {
+    if (isHidden) {
+        db.find({$not: {done: '1' }}).sort({ [sorting]: order }).exec(function(err, notes) {
+            callback(err, notes);
         });
-    });
-    return result;
-}
-
-function getAllNotesByCreatedDate() {
-    let result = [];
-    db.find({}).sort({creationDate: 1}).exec(function(err, docs) {
-        docs.forEach(function(d) {
-            result.push(d);
+    } else {
+        db.find({}).sort({ [sorting]: order }).exec(function(err, notes) {
+            callback(err, notes);
         });
-    });
-    return result;
+    }
 }
 
-function getAllNotesByImportance() {
-    let result = [];
-    db.find({}).sort({importance: -1}).exec(function(err, docs) {
-        docs.forEach(function(d) {
-            result.push(d);
-        });
-    });
-    return result;
-}
-
-function hideDone(notes) {
-    newNotes = null;
-    notes.forEach(function(note) {
-        if(note.done === 1) {
-            newNotes.push(note);
-        }
-    });
-    notes = newNotes;
-    return notes;
-}
-
-module.exports = {getNote, addNote, getAllNotesByDueDate, getAllNotesByCreatedDate, getAllNotesByImportance, hideDone};
+module.exports = {getNote, addNote, updateNote, getAllNotes};
