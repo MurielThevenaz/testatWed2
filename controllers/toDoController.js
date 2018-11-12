@@ -2,14 +2,14 @@ const toDoListService = require('../services/toDoListService');
 
 function index(req, res)
 {
-    toDoListService.getAllNotes(10, function (err, notes) {
+    toDoListService.initializeConfig(function (err, notes) {
         res.render('toDoList', { title: 'To Do List', notes});
     });
 }
 
-function getAllNotes(req, res)
+function getConfig(req, res)
 {
-    toDoListService.getAllNotes(req.params.code, function (err, notes) {
+    toDoListService.updateConfig(req.params.updateConfig, function (err, notes) {
         res.render('toDoList', { title: 'To Do List', notes});
     });
 }
@@ -28,6 +28,20 @@ function updateEntry(req, res)
     });
 }
 
+function toggleDone(req, res)
+{
+    toDoListService.toggleDone(req.params.id, function() {
+        getAllNotes(req, res);
+    });
+}
+
+function getAllNotes(req, res)
+{
+    toDoListService.getAllNotes(function (err, notes) {
+        res.render('toDoList', { title: 'To Do List', notes});
+    });
+}
+
 function redirectToEntry(req, res)
 {
     if (req.params.id === 0) {
@@ -39,4 +53,4 @@ function redirectToEntry(req, res)
     }
 }
 
-module.exports = {index, getAllNotes, redirectToEntry, saveEntry, updateEntry};
+module.exports = {index, getConfig, redirectToEntry, saveEntry, updateEntry, toggleDone};

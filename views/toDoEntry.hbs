@@ -3,21 +3,21 @@
     <div class="input">
         <span class="input-type"></span>
         <span class="input-value">
-            <form action="{{#with _id}}/saveEntry/{{this}}{{else}}saveEntry{{/with}}" method="post">
+            <form action="{{#with _id}}/saveEntry/{{this}}{{else}}/saveEntry{{/with}}" method="post">
                 <label for="title">Titel</label>
-                <input name="titel" type="text" value="{{title}}" reguired/>
+                <input name="title" type="text" value="{{title}}" reguired/>
 
                 <label for="note">Note</label>
                 <textarea name="note" type="text">{{note}}</textarea>
 
-                <label for="dueDate">To do until</label>
-                <input type="date" name="date" value="{{dueDate}}" required/>
+                <div>
+                    <label for="dueDate">To do until</label>
+                    <input type="checkbox" name="done" value="done" {{#if_eq done 'done'}}checked="checked"{{/if_eq}}>
+                    <input type="date" name="dueDate" value="{{dueDate}}" required/>
+                </div>
 
                 <label for="importance">Importance</label>
                 <input type="range" name="importance" min="1" max="5" value="{{importance}}"/>
-
-                <label for="done"><span>Done</span></label>
-                <input type="checkbox" name="done" value="1">
 
                 <input type="submit">
                 <input type="reset">

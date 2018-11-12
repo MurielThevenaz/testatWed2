@@ -1,10 +1,6 @@
 body {
-  padding: 50px;
+  padding: 5%;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-}
-
-a {
-  color: #00B7FF;
 }
 
 h1{
@@ -13,7 +9,7 @@ h1{
   border-bottom: 1px black solid;
 }
 
-form > label{
+form label{
   display: block;
   font-weight: bold;
   width: 25%;
@@ -28,16 +24,26 @@ form > input{
 }
 
 form > input[type="submit"]{
-  width: 16rem;
+  width: 10rem;
 }
 
 form > input[type="reset"]{
-  width: 16rem;
+  width: 10rem;
 }
 
 form > input[type="range"]{
-  width: 16rem;
+  display: flex;
+  width: 14rem;
   border: none;
+}
+
+form input[type="date"]{
+  width: 14rem;
+  border: 0.2rem solid;
+}
+
+form input[type="checkbox"]{
+  border: 0.2rem solid;
 }
 
 form > input[type="submit"]:hover{
@@ -60,11 +66,6 @@ nav {
   flex-flow: row wrap;
   justify-content: space-between;
   margin-bottom: 2em;
-}
-
-.blue {
-  background-color: aqua;
-  color: aliceblue;
 }
 
 .input-container{
@@ -90,6 +91,7 @@ nav {
 
 .todo-list > span{
   display: inline-flex;
+  flex-flow: row wrap;
   justify-content: space-between;
 }
 
@@ -97,7 +99,7 @@ nav {
   display: flow;
   flex-flow: row wrap;
   border: 0.2rem solid;
-  padding: 2rem;
+  padding: 0.2rem;
 }
 
 .note {
@@ -106,15 +108,17 @@ nav {
 
 #beforeNote{
   display: flex;
+  flex-flow: row wrap;
   justify-content: space-between;
 }
 
-#titel{
+#title{
   font-weight: bold;
 }
 
 #note{
-  background: lightgray;
+    display: flex;
+    background: lightgray;
 }
 
 #date{
@@ -127,3 +131,31 @@ nav {
   position: absolute;
 }
 
+#hideDone {
+  display: flex;
+  justify-content: flex-end;
+    margin-bottom: 0.3rem;
+}
+
+#hideDone button {
+    border: 0.1rem solid;
+    border-radius: 0.6rem;
+    max-width: 25%;
+    box-sizing: border-box;
+    background-color: darkgray;
+    font-style: italic;
+    font-weight: bold;
+    font-size: x-small;
+}
+
+#hideDone button:hover {
+    cursor: pointer;
+}
+
+#hideDone button:active{
+    background-color: lightgrey;
+}
+
+#done{
+    padding-right: 1rem;
+}

@@ -1,7 +1,6 @@
-{"titel":"","note":"Does it work now","date":"2018-11-20","importance":"5","_id":"3Oo707K8DrWijixI"}
-{"titel":"My fifth Note","note":"","date":"2018-11-27","importance":"3","creationDate":1541861079210,"_id":"H1Ne56XW38plGWb0"}
-{"titel":"Second Task","note":"Testing second","date":"2018-11-30","importance":"2","creationDate":1541740599013,"_id":"SRyWX0xC3bJ5tTRL"}
-{"titel":"My new task","note":"Test","date":"2018-11-12","importance":"5","creationDate":1541740573941,"_id":"bvpgTvDxFUeSBfxe"}
-{"titel":"Hidden Task","note":"Testing","date":"2018-11-28","importance":"2","done":"1","creationDate":1541741353967,"_id":"cTpWnGgEKZF1x2Rx"}
-{"titel":"My forth note","note":"","date":"2018-11-21","importance":"3","creationDate":1541860588206,"_id":"ezYFmsvZrxK7ATW4"}
-{"titel":"New Test","note":"Less important, very urgent","date":"2018-11-11","importance":"1","creationDate":1541860494515,"_id":"vAzXdUoKAG2Y85uK"}
+{"title":"My first note","note":"It is done","done":"done","dueDate":"2018-11-06","importance":"3","creationDate":1542026443673,"_id":"BSGGuqXlfT7H0hEP"}
+{"title":"My second note","note":"Not done yet","dueDate":"2018-11-14","importance":"3","creationDate":1542026455155,"done":"not done","_id":"1i42v47ndSdqVu3X"}
+{"title":"My second note","note":"Not done yet","dueDate":"2018-11-14","importance":"3","creationDate":1542026455155,"done":"done","_id":"1i42v47ndSdqVu3X"}
+{"title":"My second note","note":"Not done yet","done":"done","dueDate":"2018-11-14","importance":"3","_id":"1i42v47ndSdqVu3X"}
+{"title":"My third note","note":"Working?","dueDate":"2018-11-06","importance":"3","creationDate":1542026480365,"done":"not done","_id":"lNtxpBbIlp2qN1wA"}
+{"title":"My third note","note":"Working?","dueDate":"2018-11-06","importance":"3","creationDate":1542026480365,"done":"done","_id":"lNtxpBbIlp2qN1wA"}
