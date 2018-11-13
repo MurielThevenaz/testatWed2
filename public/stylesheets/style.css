@@ -68,34 +68,34 @@ nav {
   margin-bottom: 2em;
 }
 
-.input-container{
+#input-container{
   display: flow;
   flex-flow: row wrap;
   width: 100%;
 }
 
-.input-container input {
+#input-container input {
   margin-bottom: 1rem;
 }
 
-.input-container textarea {
+#input-container textarea {
   height: 6em;
   margin-bottom: 1rem;
 }
 
-.todo-list{
+#todo-list{
   display: flow;
   flex-flow: row wrap;
   width: 100%;
 }
 
-.todo-list > span{
+#todo-list > span{
   display: inline-flex;
   flex-flow: row wrap;
   justify-content: space-between;
 }
 
-.notes-container {
+#notes-container {
   display: flow;
   flex-flow: row wrap;
   border: 0.2rem solid;
@@ -106,7 +106,7 @@ nav {
   margin-bottom: 3rem;
 }
 
-#beforeNote{
+#before-note{
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
@@ -131,13 +131,13 @@ nav {
   position: absolute;
 }
 
-#hideDone {
+#hide-done {
   display: flex;
   justify-content: flex-end;
     margin-bottom: 0.3rem;
 }
 
-#hideDone button {
+#hide-done button {
     border: 0.1rem solid;
     border-radius: 0.6rem;
     max-width: 25%;
@@ -148,14 +148,19 @@ nav {
     font-size: x-small;
 }
 
-#hideDone button:hover {
+#hide-done button:hover {
     cursor: pointer;
 }
 
-#hideDone button:active{
+#hide-done button:active{
     background-color: lightgrey;
 }
 
 #done{
     padding-right: 1rem;
+}
+
+.style-wrapper {
+    background: darkblue;
+    color: white;
 }

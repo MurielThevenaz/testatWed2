@@ -7,7 +7,7 @@
     <title>{{title}}</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
-  <body>
+  <body {{#if_eq style 'blue'}}class="style-wrapper"{{/if_eq}}>
     {{{body}}}
   </body>
 </html>

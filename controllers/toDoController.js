@@ -2,15 +2,15 @@ const toDoListService = require('../services/toDoListService');
 
 function index(req, res)
 {
-    toDoListService.initializeConfig(function (err, notes) {
-        res.render('toDoList', { title: 'To Do List', notes});
+    toDoListService.initializeConfig(req.body, function (err, notes, style) {
+        res.render('toDoList', { title: 'To Do List', notes, style});
     });
 }
 
 function getConfig(req, res)
 {
-    toDoListService.updateConfig(req.params.updateConfig, function (err, notes) {
-        res.render('toDoList', { title: 'To Do List', notes});
+    toDoListService.updateConfig(req.params.updateConfig, function (err, notes, style) {
+        res.render('toDoList', { title: 'To Do List', notes, style});
     });
 }
 
@@ -37,8 +37,8 @@ function toggleDone(req, res)
 
 function getAllNotes(req, res)
 {
-    toDoListService.getAllNotes(function (err, notes) {
-        res.render('toDoList', { title: 'To Do List', notes});
+    toDoListService.getAllNotes(function (err, notes, style) {
+        res.render('toDoList', { title: 'To Do List', notes, style});
     });
 }
 

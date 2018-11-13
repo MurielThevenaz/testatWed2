@@ -2,11 +2,11 @@
     <form action="/toDoEntry/0" method="get">
         <input type="submit" value="Create new note">
     </form>
-    <form action=/toDoList/toggleStyle" method="post" >
-        <input type="submit" value="Switch style">
+    <form action="/toDoList/toggleStyle" method="post">
+        <input type="submit" value="Switch Style">
     </form>
 </nav>
-<section class="todo-list">
+<section id="todo-list">
     <h1>Your To Do List</h1>
     <span>
     <form action="/toDoList/dueDate" method="post">
@@ -24,18 +24,18 @@
         <input type="submit" value="Sort By Importance">
     </form>
     </span>
-    <form id="hideDone" action="/toDoList/toggleHide" method="post">
+    <form id="hide-done" action="/toDoList/toggleHide" method="post">
         <label for="updateConfig"></label>
         <button name="updateConfig" value="checked" onclick="this.form.submit()">Hide Done Tasks</button>
     </form>
 </section>
 <main>
-    <div class="notes-container">
+    <div id="notes-container">
         {{#each notes}}
             <div class="note">
                 <div id="date">Due Date: {{this.dueDate}}</div>
                 <div id="title">{{this.title}}</div>
-                <div id="beforeNote">
+                <div id="before-note">
                     <span id="importance">
                         {{#if_eq importance 1}}Ok to forget it{{/if_eq}}
                         {{#if_eq importance 2}}Not so important{{/if_eq}}
@@ -43,7 +43,7 @@
                         {{#if_eq importance 4}}Very important{{/if_eq}}
                         {{#if_eq importance 5}}Extremely important{{/if_eq}}
                     </span>
-                    <span id="changeNote">
+                    <span id="change-note">
                         <form action="/toDoEntry/{{this._id}}" method="get">
                             <input type="submit" value="Change existing note">
                         </form>

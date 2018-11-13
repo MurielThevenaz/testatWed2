@@ -4,15 +4,15 @@ let db = new Datastore({ filename: './data/notes.db', autoload: true });
 // in memory database
 let configuration = new Datastore();
 
-function initializeConfig(callback) {
+function initializeConfig(body, callback) {
     let initialization = {
         id: 1,
         sorting: 'dueDate',
         order: 1,
         isHidden: false,
-        style: 'white'
+        style: 'blue'
     };
-    configuration.insert(initialization, function(err, config) {
+    configuration.insert(initialization, function() {
         getAllNotes(callback);
     });
 }
@@ -48,7 +48,7 @@ function updateConfig(updateConfig, callback) {
                 break;
             default:
         }
-        configuration.update({id: 1}, config, {}, function(err, config) {
+        configuration.update({id: 1}, config, {}, function() {
             getAllNotes(callback);
         });
     });
@@ -87,11 +87,11 @@ function getAllNotes(callback) {
     configuration.findOne({ id: 1 }, function(err, config) {
         if (config.isHidden) {
             db.find({$not: {done: 'done' }}).sort({ [config.sorting]: config.order }).exec(function(err, notes) {
-                callback(err, notes);
+                callback(err, notes, config.style);
             });
         } else {
             db.find({}).sort({ [config.sorting]: config.order }).exec(function(err, notes) {
-                callback(err, notes);
+                callback(err, notes, config.style);
             });
         }
     });
