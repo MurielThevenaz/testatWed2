@@ -1,0 +1,6 @@
+{"title":"My first task","note":"Urgent, but not important","dueDate":"2018-11-15","importance":"2","creationDate":1542217196269,"done":"not done","_id":"UW91moa5HQKQiCoR"}
+{"title":"Other note","note":"Important, but not urgent","dueDate":"2018-11-30","importance":"5","creationDate":1542217254012,"done":"not done","_id":"Y8rSHywJs1GzPFX6"}
+{"title":"Done task","note":"Allready done!","done":"done","dueDate":"2018-11-22","importance":"4","creationDate":1542217275918,"_id":"NE7SlJi8TnWsJFCx"}
+{"title":"Forth note","note":"hhjhlk","dueDate":"2018-11-26","importance":"1","creationDate":1542217345223,"done":"not done","_id":"L9CD2Vl512acvPSC"}
+{"title":"Other note","note":"Important, but not urgent","dueDate":"2018-11-30","importance":"5","creationDate":1542217254012,"done":"done","_id":"Y8rSHywJs1GzPFX6"}
+{"title":"Done task - changed","note":"Allready done!","dueDate":"2018-11-22","importance":"4","creationDate":1542217391658,"done":"not done","_id":"XiaBHcxU8X3agIS8"}

@@ -1,16 +1,43 @@
-var createError = require('http-errors');
-var hbs = require('hbs');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
-var session = require('express-session');
-var bodyParser = require('body-parser');
+const createError = require('http-errors');
+const hbs = require('hbs');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
+const session = require('express-session');
+const bodyParser = require('body-parser');
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+const indexRouter = require('./routes/index');
+const usersRouter = require('./routes/users');
 
-var app = express();
+const app = express();
+
+app.use(session({secret: 'casduichasidbnuwezrfinasdcvjkadfhsuilfuzihfioda', resave: false, saveUninitialized: true}));
+
+const sessionUserSettings = (req, res, next) => {
+    // default Wert oder aktueller Wert von der Session lesen
+    const userSettings = req.session.userSettings || {orderBy: 'dueDate', orderDirection: 1, hidden: 'no', style: 'white'};
+    const {orderBy, orderDirection, style, hidden} = req.query;
+
+    if (orderBy) {
+        userSettings.orderBy = orderBy;
+    }
+    if (orderDirection) {
+        userSettings.orderDirection = orderDirection;
+    }
+    if (style) {
+        userSettings.style = style;
+    }
+    if (hidden) {
+        userSettings.hidden = hidden;
+    }
+    req.userSettings = req.session.userSettings = userSettings;
+
+    next();
+};
+
+app.use(sessionUserSettings);
+
 
 hbs.registerHelper('if_eq', function(a, b, opts) {
     if(a == b)
@@ -31,17 +58,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-
-app.use(session({
-    secret: 'mysecret',
-    resave: false,
-    saveUninitialized: true,
-    cookie: { path: '/',
-        httpOnly: true,
-        secure: false,
-        maxAge: 3.6 * 1000000  // 60 minutes
-    },
-}));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

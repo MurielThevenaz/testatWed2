@@ -1,56 +1,47 @@
 const toDoListService = require('../services/toDoListService');
 
-function index(req, res)
+function loadPage(req, res)
 {
-    toDoListService.initializeConfig(req.body, function (err, notes, style) {
-        res.render('toDoList', { title: 'To Do List', notes, style});
-    });
-}
-
-function getConfig(req, res)
-{
-    toDoListService.updateConfig(req.params.updateConfig, function (err, notes, style) {
-        res.render('toDoList', { title: 'To Do List', notes, style});
+    toDoListService.getAllNotes(req.userSettings, function (err, notes, style, orderDirection, hidden) {
+        res.render('toDoList', { title: 'To Do List', notes, style, orderDirection, hidden});
     });
 }
 
 function saveEntry(req, res)
 {
     toDoListService.addNote(req.body, function() {
-        getAllNotes(req, res);
+        loadPage(req, res);
     });
 }
 
 function updateEntry(req, res)
 {
     toDoListService.updateNote(req.params.id, req.body, function() {
-        getAllNotes(req, res);
-    });
-}
-
-function toggleDone(req, res)
-{
-    toDoListService.toggleDone(req.params.id, function() {
-        getAllNotes(req, res);
-    });
-}
-
-function getAllNotes(req, res)
-{
-    toDoListService.getAllNotes(function (err, notes, style) {
-        res.render('toDoList', { title: 'To Do List', notes, style});
+        loadPage(req, res);
     });
 }
 
 function redirectToEntry(req, res)
 {
-    if (req.params.id === 0) {
-        res.render('toDoEntry');
+    if (req.query.id === '0') {
+        res.render('toDoEntry', {style: req.userSettings.style});
     } else {
-        toDoListService.getNote(req.params.id, function(err, note) {
-           res.render('toDoEntry', note);
+        toDoListService.getNote(req.query.id, function(err, note, style) {
+           res.render('toDoEntry', {
+               title: note.title,
+               note: note.note,
+               dueDate: note.dueDate,
+               importance: note.importance,
+               style: req.userSettings.style});
         });
     }
 }
 
-module.exports = {index, getConfig, redirectToEntry, saveEntry, updateEntry, toggleDone};
+function toggleDone(req, res)
+{
+    toDoListService.toggleDone(req.params.id, function() {
+        loadPage(req, res);
+    });
+}
+
+module.exports = {loadPage, redirectToEntry, saveEntry, updateEntry, toggleDone};
